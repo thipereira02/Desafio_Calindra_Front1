@@ -34,6 +34,7 @@ const GlobalStyle = createGlobalStyle`
 	body {
 		line-height: 1;
 		background: #F1F1F1;
+		font-family: 'Josefin Slab', serif;
 	}
 	ol, ul {
 		list-style: none;
