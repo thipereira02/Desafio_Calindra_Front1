@@ -8,17 +8,16 @@ export default function List({ products, searchField }) {
     if (products.length === 0) {
         return (
             <Body>
-                <Text>Nenhum resultado encontrado para &quot;{searchField}&quot;</Text>
+                <Text size={products.length}>Nenhum resultado encontrado para &quot;{searchField}&quot;</Text>
             </Body>
         );
     }
 
     return (
         <Body>
-            <Text>Encontramos {products.length} {products.length === 1 ? 'produto' : 'produtos'}</Text>
-            {products && products.map(p => {
-                <h2 key={p.id}>{p.name}</h2>;
-            })}
+            <Text size={products.length}>Encontramos {products.length} {products.length === 1 ? 'produto' : 'produtos'}</Text>
+            <p>p.name</p>
+            <p>p.name</p>
         </Body>
     );
 }
@@ -26,10 +25,18 @@ export default function List({ products, searchField }) {
 const Body = styled.div`
     width: 80%;
     margin: 140px auto;
+
+    p{  
+        font-size: 25px;
+        font-weight: 700;
+        margin-bottom: 7px;
+        color: #262626;
+    }
 `;
 
 const Text = styled.h1`
-    font-size: 40px;
+    font-size: ${props => props.size === 0 ? '40px' : '20px'};
     font-weight: 700;
     color: #787E87;
+    margin-bottom: 10px;
 `;
