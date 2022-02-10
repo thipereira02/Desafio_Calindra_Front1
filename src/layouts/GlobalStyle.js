@@ -58,6 +58,9 @@ const GlobalStyle = createGlobalStyle`
 		color: inherit;
 		text-decoration: none;
 	}
+	input {
+		font-family: 'Josefin Slab', serif;
+	}
 	* {
 		box-sizing: border-box;
 		outline: none;
