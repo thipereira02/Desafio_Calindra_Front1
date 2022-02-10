@@ -1,6 +1,8 @@
 /* eslint-disable react/prop-types */
 import React, { useState } from 'react';
 import styled from 'styled-components';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 import { AiOutlineUser, AiOutlineHeart, AiOutlineShoppingCart, AiOutlineSearch } from 'react-icons/ai';
 
 import logo from '../assets/logo.png';
@@ -48,9 +50,9 @@ export default function Header({ searchField, setSearchField, setProducts }){
                 </Button>
             </form>
             <Icons>
-                <AiOutlineUser size="30px" color="#787E87" cursor="pointer" />
-                <AiOutlineHeart size="30px" color="#787E87" cursor="pointer" />
-                <AiOutlineShoppingCart size="30px" color="#787E87" cursor="pointer" />
+                <AiOutlineUser onClick={() => toast.info('Em breve')} size="30px" color="#787E87" cursor="pointer" />
+                <AiOutlineHeart onClick={() => toast.info('Em breve')} size="30px" color="#787E87" cursor="pointer" />
+                <AiOutlineShoppingCart onClick={() => toast.info('Em breve')} size="30px" color="#787E87" cursor="pointer" />
             </Icons>
         </Body>
     );
