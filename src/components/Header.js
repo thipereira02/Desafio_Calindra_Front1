@@ -7,6 +7,7 @@ import { AiOutlineUser, AiOutlineHeart, AiOutlineShoppingCart, AiOutlineSearch }
 
 import logo from '../assets/logo.png';
 import { getProducts } from '../services/server';
+import replaceSpecialChars from '../utils/replaceSpecialChars';
 
 export default function Header({ searchField, setSearchField, setProducts }){
     const [loading, setLoading] = useState(false);
@@ -36,7 +37,7 @@ export default function Header({ searchField, setSearchField, setProducts }){
         // for (let i=0; i<a.length; i++){
         //       
         // }
-        const filteredArr = arr.filter(item => item.name.toLowerCase().includes(searchField.toLowerCase().trim()));
+        const filteredArr = arr.filter(item => replaceSpecialChars(item.name).includes(replaceSpecialChars(searchField)));
         setProducts(filteredArr);
     }
     
