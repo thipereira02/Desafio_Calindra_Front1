@@ -23,18 +23,31 @@ export default function Header({ searchField, setSearchField, setProducts }){
     }
 
     function filterResult(arr) {
-        const filteredArr = arr.filter(item => item.name.includes(searchField));
+        // console.log(arr);
+        // const fields = searchField.split(' ');
+        // const a = [];
+        // for (let i=0; i<fields.length; i++){
+        //     a.push(arr.filter(item => item.name.includes(fields[i])));
+        // }
+        // console.log(a);
+
+        // c = a.map(a => a[0].name);
+        // console.log(a);
+        // for (let i=0; i<a.length; i++){
+        //       
+        // }
+        const filteredArr = arr.filter(item => item.name.toLowerCase().includes(searchField.toLowerCase().trim()));
         setProducts(filteredArr);
     }
     
-    function toHomePage() {
+    function toInitialPage() {
         setProducts('');
         setSearchField('');
     }
 
     return (
         <Body>
-            <img src={logo} alt="logo" onClick={toHomePage}/>
+            <img src={logo} alt="logo" onClick={toInitialPage}/>
             <form onSubmit={searchProduct}>
                 <Input 
                     type="text" 

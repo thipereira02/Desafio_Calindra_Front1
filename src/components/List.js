@@ -3,8 +3,6 @@ import React from 'react';
 import styled from 'styled-components';
 
 export default function List({ products, searchField }) {
-    console.log(products);
-
     if (products.length === 0) {
         return (
             <Body>
@@ -16,8 +14,9 @@ export default function List({ products, searchField }) {
     return (
         <Body>
             <Text size={products.length}>Encontramos {products.length} {products.length === 1 ? 'produto' : 'produtos'}</Text>
-            <p>p.name</p>
-            <p>p.name</p>
+            {products && products.map(p => 
+                <p key={p.id}>- {p.name}</p>
+            )}
         </Body>
     );
 }
