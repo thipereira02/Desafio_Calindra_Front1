@@ -17,7 +17,7 @@ export default function Home() {
             {(typeof(products) === 'string') ?
                 <CarouselCover />
                 :
-                <List products={products} searchField={searchField} />
+                <List products={products} />
             }
         </>
     );

@@ -2,13 +2,13 @@
 import React from 'react';
 import styled from 'styled-components';
 
-export default function List({ products, searchField }) {
-    
+export default function List({ products }) {
+    console.log(products);
 
     if (products.length === 0) {
         return (
             <Body>
-                <Text size={products.length}>Nenhum resultado encontrado para &quot;{searchField}&quot;</Text>
+                <Text size={products.length}>Nenhum resultado encontrado para sua busca</Text>
             </Body>
         );
     }
@@ -16,8 +16,8 @@ export default function List({ products, searchField }) {
     return (
         <Body>
             <Text size={products.length}>Encontramos {products.length} {products.length === 1 ? 'produto' : 'produtos'}</Text>
-            {products && products.map(p => 
-                <p key={p.id}>- {p.name}</p>
+            {products && products.map((p, i) => 
+                <p key={i}>- {p}</p>
             )}
         </Body>
     );

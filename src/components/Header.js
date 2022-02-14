@@ -8,6 +8,7 @@ import { AiOutlineUser, AiOutlineHeart, AiOutlineShoppingCart, AiOutlineSearch }
 import logo from '../assets/logo.png';
 import { getProducts } from '../services/server';
 import replaceSpecialChars from '../utils/replaceSpecialChars';
+import removeBlanks from '../utils/removeBlanks';
 
 export default function Header({ searchField, setSearchField, setProducts }){
     const [loading, setLoading] = useState(false);
@@ -24,21 +25,18 @@ export default function Header({ searchField, setSearchField, setProducts }){
     }
 
     function filterResult(arr) {
-        // console.log(arr);
-        // const fields = searchField.split(' ');
-        // const a = [];
-        // for (let i=0; i<fields.length; i++){
-        //     a.push(arr.filter(item => item.name.includes(fields[i])));
-        // }
-        // console.log(a);
-
-        // c = a.map(a => a[0].name);
-        // console.log(a);
-        // for (let i=0; i<a.length; i++){
-        //       
-        // }
-        const filteredArr = arr.filter(item => replaceSpecialChars(item.name).includes(replaceSpecialChars(searchField)));
-        setProducts(filteredArr);
+        const fields = searchField.split(' ');
+        const adjustedFields = removeBlanks(fields);
+        let productsArr = [];
+        for (let i=0; i<adjustedFields.length; i++){
+            productsArr.push(arr.filter(item => replaceSpecialChars(item.name).includes(replaceSpecialChars(adjustedFields[i]))));
+        }
+        let filteredArr = [...productsArr];
+        if (productsArr.length >= 2) {
+            filteredArr = productsArr[0].map(p => p.name).concat(productsArr[1].map(p => p.name));
+        } else filteredArr = productsArr[0].map(p => p.name);
+        
+        setProducts([...new Set(filteredArr)]);
     }
     
     function toInitialPage() {
