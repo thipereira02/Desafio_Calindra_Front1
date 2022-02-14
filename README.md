@@ -2,6 +2,8 @@
 
 In this web application, it is possible to search for products available in a virtual store.
 
+<img src="./public/assets/tshirts.gif" />
+
 ## About
 
 This is an web application where it is possible to search for your desired product.
